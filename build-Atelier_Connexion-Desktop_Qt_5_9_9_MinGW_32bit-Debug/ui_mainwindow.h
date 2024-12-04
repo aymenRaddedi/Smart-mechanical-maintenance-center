@@ -67,10 +67,6 @@ public:
     QPlainTextEdit *plainTextEdit;
     QPushButton *pushButton_search_4;
     QWidget *widget;
-    QWidget *tab;
-    QLabel *label_ph_2;
-    QLabel *label_statisticsTitle;
-    QLabel *label_statisticsTitle_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -4718,7 +4714,7 @@ public:
         widget->setMinimumSize(QSize(1201, 0));
         widget->setMaximumSize(QSize(1201, 731));
         widget->setStyleSheet(QLatin1String("QWidget {\n"
-"    background: url(C:/Users/hp/Downloads/pexels-dmitry-demidov-515774-678.jpg);\n"
+"    background: url(\":/images/image/pexels-dmitry-demidov-515774-678.jpg\");\n"
 "}\n"
 ""));
         tabWidget->addTab(tab_5, QString());
@@ -4736,24 +4732,6 @@ public:
         lineEdit_search_2->raise();
         plainTextEdit->raise();
         pushButton_search_4->raise();
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        label_ph_2 = new QLabel(tab);
-        label_ph_2->setObjectName(QStringLiteral("label_ph_2"));
-        label_ph_2->setGeometry(QRect(-30, -60, 1171, 691));
-        label_statisticsTitle = new QLabel(tab);
-        label_statisticsTitle->setObjectName(QStringLiteral("label_statisticsTitle"));
-        label_statisticsTitle->setGeometry(QRect(580, 550, 200, 30));
-        QFont font3;
-        font3.setPointSize(14);
-        font3.setBold(true);
-        font3.setWeight(75);
-        label_statisticsTitle->setFont(font3);
-        label_statisticsTitle_2 = new QLabel(tab);
-        label_statisticsTitle_2->setObjectName(QStringLiteral("label_statisticsTitle_2"));
-        label_statisticsTitle_2->setGeometry(QRect(610, 550, 200, 30));
-        label_statisticsTitle_2->setFont(font3);
-        tabWidget->addTab(tab, QString());
         MainWindow->setCentralWidget(tabWidget);
         tabWidget->raise();
 
@@ -4796,10 +4774,6 @@ public:
         plainTextEdit->setPlaceholderText(QApplication::translate("MainWindow", "Contenu de mail ", Q_NULLPTR));
         pushButton_search_4->setText(QApplication::translate("MainWindow", "Envoyer", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("MainWindow", "Service", Q_NULLPTR));
-        label_ph_2->setText(QString());
-        label_statisticsTitle->setText(QApplication::translate("MainWindow", "Service Statistics", Q_NULLPTR));
-        label_statisticsTitle_2->setText(QApplication::translate("MainWindow", "Service Statistics", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Statistics", Q_NULLPTR));
     } // retranslateUi
 
 };

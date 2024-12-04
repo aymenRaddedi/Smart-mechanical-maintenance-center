@@ -75,12 +75,61 @@ MainWindow::MainWindow(QWidget *parent) :
     QDoubleValidator *doubleValidator = new QDoubleValidator(0, 1000000, 2, this);
     doubleValidator->setNotation(QDoubleValidator::StandardNotation);
     ui->lineEdit_prix->setValidator(doubleValidator);
-}
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+       int ret=A.connect_arduino(); // lancer la connexion à arduino
+       switch(ret){
+       case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+           break;
+       case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+          break;
+       case(-1):qDebug() << "arduino is not available";
+       }
+        QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(arduinoo()));
+   }
+
+   MainWindow::~MainWindow()
+   {
+       delete ui;
+   }
+   void MainWindow::arduinoo() {
+           QString data = A.read_from_arduino();
+           if (!data.isEmpty()) {
+               bool isValidCode = verifyCode(data);
+               if (isValidCode) {
+                   qDebug() << "Code valide : " << data;
+                   A.write_to_arduino("0");
+                    QMessageBox::information(this, "reussie ", "matricule : "+data+" existe dans la  base");
+
+               } else {
+
+                   qDebug() << "Code invalide : " << data;
+                   QMessageBox::warning(this, "echec ", "matricule : "+data+" n'existe pas dans la  base");
+               }
+           }
+
+   }
+   bool MainWindow::verifyCode(QString data)
+   {
+       QSqlQuery query;
+
+       qDebug() << "Preparing query to verify code:" << data; // Debug input data
+       query.prepare("SELECT * FROM VOITURE WHERE matricule = :code");
+       query.bindValue(":code", data);
+
+       if (query.exec()) {
+           qDebug() << "Query executed successfully.";
+           if (query.next()) {
+               qDebug() << "Code found in database:" << data;
+               return true; // Code exists in the database
+           } else {
+               qDebug() << "Code not found in database:" << data;
+           }
+       } else {
+           qDebug() << "Query execution error:" << query.lastError().text();
+       }
+
+       return false; // Code not found or query execution failed
+   }
 
 void MainWindow::on_pushButton_ajouter_clicked()
 {
@@ -336,7 +385,7 @@ void MainWindow::on_pushButton_supprimer_clicked()
 void MainWindow::addToHistory(const QString &action, const QString &serviceName)
 {
     // Chemin du fichier historique
-    QString filePath = "C:/Users/hp/Downloads/Atelier_Connexion/Atelier_Connexion/historique_services.txt";
+    QString filePath = ":/images/image/historique_services.txt";
     QFile file(filePath);
 
     // Ouvrir le fichier en mode ajout
@@ -364,7 +413,7 @@ void MainWindow::addToHistory(const QString &action, const QString &serviceName)
 void MainWindow::saveHistoryToFile()
 {
     // Chemin du fichier historique
-    QString filePath = "C:/Users/hp/Downloads/Atelier_Connexion/Atelier_Connexion/historique_services.txt";
+    QString filePath = ":/images/image/historique_services.txt";// :/images/image/pexels-dmitry-demidov-515774-678.jpg
     QFile file(filePath);
 
     // Ouvrir le fichier en mode lecture
@@ -388,7 +437,7 @@ void MainWindow::saveHistoryToFile()
 
 void MainWindow::on_pushButton_search_3_clicked()
 {
-    QString filePath = "C:/Users/hp/Downloads/Atelier_Connexion/Atelier_Connexion/historique_services.txt";
+    QString filePath = ":/images/image/historique_services.txt"; //C:/Users/hp/Downloads/Atelier_Connexion/Atelier_Connexion/historique_services.txt
     QFile file(filePath);
 
     // Vérifier si le fichier peut être ouvert en mode lecture

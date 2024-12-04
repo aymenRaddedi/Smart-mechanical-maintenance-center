@@ -5072,7 +5072,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      </property>
      <property name="styleSheet">
       <string notr="true">QWidget {
-    background: url(C:/Users/hp/Downloads/pexels-dmitry-demidov-515774-678.jpg);
+    background: url(&quot;:/images/image/pexels-dmitry-demidov-515774-678.jpg&quot;);
 }
 </string>
      </property>
@@ -5091,64 +5091,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     <zorder>lineEdit_search_2</zorder>
     <zorder>plainTextEdit</zorder>
     <zorder>pushButton_search_4</zorder>
-   </widget>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Statistics</string>
-    </attribute>
-    <widget class="QLabel" name="label_ph_2">
-     <property name="geometry">
-      <rect>
-       <x>-30</x>
-       <y>-60</y>
-       <width>1171</width>
-       <height>691</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_statisticsTitle">
-     <property name="geometry">
-      <rect>
-       <x>580</x>
-       <y>550</y>
-       <width>200</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Service Statistics</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_statisticsTitle_2">
-     <property name="geometry">
-      <rect>
-       <x>610</x>
-       <y>550</y>
-       <width>200</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Service Statistics</string>
-     </property>
-    </widget>
    </widget>
   </widget>
   <zorder>tabWidget</zorder>

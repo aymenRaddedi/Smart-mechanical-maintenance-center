@@ -1,2 +1,7 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/images">
+        <file>image/handle.png</file>
+        <file>image/pexels-dmitry-demidov-515774-678.jpg</file>
+        <file>image/historique_services.txt</file>
+    </qresource>
+</RCC>

@@ -13,6 +13,7 @@
 #include <QtCharts/QChartView>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
+#include "arduino.h"
 namespace Ui {
 class MainWindow;
 }
@@ -42,12 +43,13 @@ private slots:
       void on_pushButton_search_3_clicked();
 
       void on_pushButton_search_4_clicked();
-
+      void arduinoo() ;
+           bool verifyCode(QString data);
 private:
     Ui::MainWindow *ui;
      QTableView *tableView;
     Service Etmp;
-
+    arduino A;
 };
 
 #endif // MAINWINDOW_H
